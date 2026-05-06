@@ -1,0 +1,262 @@
+# HELGA Configuration - Cultural Parameters Default
+
+# Schwartz Values (dim=10)
+# Order: Self-Transcendence, Openness, Benevolence, Conformity,
+#        Security, Achievement, Hedonism, Stimulation, Self-Direction, Universalism
+schwartz_values:
+  dim: 10
+  default: [0.8, 0.6, 0.7, 0.5, 0.9, 0.4, 0.6, 0.8, 0.7, 0.5]
+
+# Social Norms Matrix (10x10)
+# Rows: norms, Columns: actions
+# Values: 0.0 (forbidden) to 1.0 (completely acceptable)
+social_norms:
+  dim: 10
+  # Row 0: no harm
+  # Row 1: respect property
+  # Row 2: transparent actions
+  # Row 3: accountable
+  # Row 4: fairness
+  # Row 5: loyalty
+  # Row 6: intimacy maintenance
+  # Row 7: role fulfillment
+  # Row 8: health maintenance
+  # Row 9: resource preservation
+  matrix:
+    - [1.0, 0.9, 0.8, 0.7, 0.3, 0.5, 0.6, 0.8, 0.9, 1.0, 0.7, 0.8, 0.6, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.8]
+    - [0.9, 1.0, 0.9, 0.8, 0.4, 0.6, 0.5, 0.7, 0.8, 0.9, 0.6, 0.7, 0.5, 0.3, 0.4, 0.2, 0.1, 0.3, 0.5, 0.7]
+    - [0.8, 0.9, 1.0, 0.9, 0.5, 0.7, 0.6, 0.8, 0.7, 0.8, 0.5, 0.6, 0.4, 0.2, 0.3, 0.1, 0.0, 0.2, 0.4, 0.6]
+    - [0.7, 0.8, 0.9, 1.0, 0.6, 0.8, 0.7, 0.9, 0.6, 0.7, 0.4, 0.5, 0.3, 0.1, 0.2, 0.0, 0.0, 0.1, 0.3, 0.5]
+    - [0.3, 0.4, 0.5, 0.6, 1.0, 0.8, 0.7, 0.5, 0.4, 0.3, 0.8, 0.9, 0.7, 0.5, 0.6, 0.4, 0.3, 0.5, 0.7, 0.9]
+    - [0.5, 0.6, 0.7, 0.8, 0.8, 1.0, 0.9, 0.7, 0.6, 0.5, 0.9, 0.8, 0.6, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.8]
+    - [0.6, 0.5, 0.6, 0.7, 0.7, 0.9, 1.0, 0.8, 0.7, 0.6, 0.7, 0.6, 0.5, 0.3, 0.4, 0.2, 0.1, 0.3, 0.5, 0.7]
+    - [0.8, 0.7, 0.8, 0.9, 0.5, 0.7, 0.8, 1.0, 0.9, 0.8, 0.7, 0.6, 0.4, 0.2, 0.3, 0.1, 0.0, 0.2, 0.4, 0.6]
+    - [0.9, 0.8, 0.7, 0.6, 0.4, 0.6, 0.7, 0.9, 1.0, 0.9, 0.8, 0.7, 0.5, 0.3, 0.4, 0.2, 0.1, 0.3, 0.5, 0.7]
+    - [1.0, 0.9, 0.8, 0.7, 0.3, 0.5, 0.6, 0.8, 0.9, 1.0, 0.7, 0.8, 0.6, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.8]
+
+# Affect Schema (dim=10)
+# Positive: joy, interest, surprise, gratitude, hope
+# Negative: anger, fear, sadness, disgust, shame
+affect_schema:
+  dim: 10
+  default: [0.5, -0.3, 0.7, 0.4, -0.6, -0.2, -0.5, -0.4, 0.6, 0.3]
+
+# Perception Parameters
+perception:
+  env_dim: 10
+  event_dim: 64
+  other_state_dim: 10
+  output_dim: 32
+  num_heads: 4
+  dropout: 0.1
+
+# Cognition Parameters
+cognition:
+  hidden_state_dim: 10
+  intent_dim: 3
+  social_relation_dim: 5
+  causality_dim: 2
+  num_particles: 100
+  inference_method: "particle_filter"  # or "svi"
+
+# Decision Parameters
+decision:
+  action_space_size: 20
+  norm_weight: 0.3
+  complexity_penalty: 0.1
+  value_weight_vector_dim: 10
+
+# Action Parameters
+action:
+  noise_std: 0.01
+  learning_rate: 0.001
+
+# Validation Thresholds
+validation:
+  ecological_js_threshold: 0.15
+  cultural_spearman_threshold: 0.8
+  counterfactual_accuracy_threshold: 0.85
+  structural_ci_width: 1.96
+  temporal_icc_threshold: 0.9
+  adversarial_reject_threshold: 0.95
+
+# Scene Decision Mapping Architectures
+# Maps context types to scene decisions with atomic action groupings
+scene_decision_architectures:
+  # Traffic scenarios (highway closed, congestion, etc.)
+  traffic:
+    原地等待:
+      atomic_actions: ["wait", "wait_traffic_clear"]
+      value_orientation:
+        security: 0.9
+        tradition: 0.8
+        conformity: 0.3
+      estimated_outcome:
+        time_impact: "high"
+        cost: 0
+        risk: "low"
+    绕路行驶:
+      atomic_actions: ["take_detour", "check_info"]
+      value_orientation:
+        self_direction: 0.9
+        achievement: 0.8
+        openness: 0.7
+      estimated_outcome:
+        time_impact: "medium"
+        cost: "medium"
+        risk: "medium"
+    取消行程:
+      atomic_actions: ["cancel_trip", "call_service"]
+      value_orientation:
+        security: 0.9
+        self_preservation: 0.8
+      estimated_outcome:
+        time_impact: "none"
+        cost: "lost_time"
+        risk: "none"
+    继续前进:
+      atomic_actions: ["continue_anyway", "check_info"]
+      value_orientation:
+        risk_taking: 0.9
+        stimulation: 0.7
+      estimated_outcome:
+        time_impact: "unknown"
+        cost: "potential_delay"
+        risk: "high"
+
+  # Social scenarios (relationships, gatherings, etc.)
+  social:
+    等待观察:
+      atomic_actions: ["wait", "ask_reason"]
+      value_orientation:
+        patience: 0.9
+        openness: 0.7
+        universalism: 0.6
+      estimated_outcome:
+        time_impact: "medium"
+        cost: 0
+        risk: "low"
+    主动帮助:
+      atomic_actions: ["provide_help", "send_reminder"]
+      value_orientation:
+        benevolence: 0.9
+        achievement: 0.6
+      estimated_outcome:
+        time_impact: "medium"
+        cost: "effort"
+        risk: "low"
+    委托代理:
+      atomic_actions: ["delegate", "reschedule"]
+      value_orientation:
+        collaboration: 0.9
+        flexibility: 0.7
+      estimated_outcome:
+        time_impact: "low"
+        cost: "delegation_overhead"
+        risk: "medium"
+    忽略应对:
+      atomic_actions: ["ignore", "continue_anyway"]
+      value_orientation:
+        independence: 0.9
+        risk_taking: 0.6
+      estimated_outcome:
+        time_impact: "none"
+        cost: 0
+        risk: "social"
+
+  # Work scenarios (tasks, meetings, proposals, etc.)
+  work:
+    等待确认:
+      atomic_actions: ["wait", "confirm"]
+      value_orientation:
+        reliability: 0.9
+        patience: 0.8
+      estimated_outcome:
+        time_impact: "medium"
+        cost: 0
+        risk: "low"
+    批准执行:
+      atomic_actions: ["approve", "send_reminder"]
+      value_orientation:
+        achievement: 0.8
+        conformity: 0.7
+      estimated_outcome:
+        time_impact: "low"
+        cost: "approval_overhead"
+        risk: "low"
+    拒绝否决:
+      atomic_actions: ["reject", "deny"]
+      value_orientation:
+        security: 0.8
+        conformity: 0.7
+      estimated_outcome:
+        time_impact: "none"
+        cost: "potential_relationship_loss"
+        risk: "medium"
+    修改调整:
+      atomic_actions: ["modify", "reschedule"]
+      value_orientation:
+        adaptability: 0.9
+        problem_solving: 0.8
+      estimated_outcome:
+        time_impact: "high"
+        cost: "iteration"
+        risk: "low"
+
+  # Emergency scenarios (danger, urgent situations, etc.)
+  emergency:
+    紧急等待:
+      atomic_actions: ["wait", "call_service"]
+      value_orientation:
+        caution: 0.9
+        security: 0.9
+      estimated_outcome:
+        time_impact: "unknown"
+        cost: "potential_delay"
+        risk: "high"
+    立即撤离:
+      atomic_actions: ["cancel_trip", "continue_anyway"]
+      value_orientation:
+        self_preservation: 0.9
+        risk_taking: 0.8
+      estimated_outcome:
+        time_impact: "immediate"
+        cost: "incomplete_task"
+        risk: "physical"
+    寻求帮助:
+      atomic_actions: ["call_service", "ask_reason"]
+      value_orientation:
+        security: 0.9
+        social_connection: 0.7
+      estimated_outcome:
+        time_impact: "medium"
+        cost: "time"
+        risk: "medium"
+
+  # Default fallback
+  default:
+    等待观察:
+      atomic_actions: ["wait"]
+      value_orientation:
+        patience: 0.9
+      estimated_outcome:
+        time_impact: "medium"
+        cost: 0
+        risk: "low"
+    主动行动:
+      atomic_actions: ["provide_help", "escalate"]
+      value_orientation:
+        proactivity: 0.9
+        responsibility: 0.8
+      estimated_outcome:
+        time_impact: "low"
+        cost: "effort"
+        risk: "medium"
+    暂不处理:
+      atomic_actions: ["ignore", "cancel"]
+      value_orientation:
+        independence: 0.9
+      estimated_outcome:
+        time_impact: "none"
+        cost: 0
+        risk: "potential"
