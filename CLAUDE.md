@@ -9,9 +9,9 @@ HELGA (Humanistic Environmental Learning and Generating Agent) — 一个计算�
 主要组件：
 - `core/` — 核心模块（感知、认知、决策、行动、文化）
 - `validation/` — 六层验证系统
-- `api/` — UDSS 决策引擎 API
-- `udss/` — UDSS 系统核心
+- `udss/` — UDSS 决策引擎
 - `frontend/` — React + Vite 前端
+- `memory/` — 记忆系统（工作记忆、情景记忆）
 - `rl/` — 强化学习更新
 
 ## 常用命令
@@ -57,14 +57,21 @@ npm run build            # 生产构建
 | 文化 | `culture.py` | Schwartz价值观、规范矩阵、情感基模 |
 | 类型 | `types.py` | 共享类型定义 |
 
-### UDSS 系统 (`api/`)
+### UDSS 系统 (`udss/`)
 
 | 模块 | 文件 | 功能 |
 |------|------|------|
-| 决策引擎 | `decision_engine.py` | 核心决策公式计算 |
-| 动作空间 | `action_space.py` | 动作候选生成与评估 |
-| 文本生成 | `text_generator.py` | 决策结果自然语言输出 |
-| 网络搜索 | `web_search.py` | 相关信息检索 |
+| 决策引擎 | `udss.py` | UDSS 核心决策逻辑 |
+| 网络搜索 | `search/` | 相关信息检索 |
+
+### 核心模块 (补充)
+
+| 模块 | 文件 | 功能 |
+|------|------|------|
+| 场景编码 | `scenario.py` | 文本场景编码 |
+| 动作参数化 | `action_parameterizer.py` | 动作参数生成 |
+| 知识库 | `knowledge.py` | 领域知识存储 |
+| 记忆系统 | `memory/` | 工作记忆 + 情景记忆 |
 
 ### 验证系统 (`validation/`)
 

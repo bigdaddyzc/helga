@@ -173,6 +173,36 @@ Reasoning: Action 1: send_reminder
 Alternatives considered: wait, reschedule, ask_reason
 ```
 
+## 快速开始
+
+```bash
+# 克隆仓库
+git clone https://github.com/bigdaddyzc/helga.git
+cd helga
+
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行示例场景
+python main.py --scenario colleague_late
+
+# 运行交互模式
+python main.py --interactive
+
+# 运行全部验证
+python main.py --run-validation
+```
+
+## 开发
+
+```bash
+# 运行测试
+pytest tests/ -v
+
+# 查看代码覆盖率
+pytest tests/ --cov
+```
+
 ## License
 
 MIT

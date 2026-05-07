@@ -471,18 +471,6 @@ def generate_synthetic_adversarial_data() -> Tuple[List[int], List[AdversarialCa
 # Combined Validation Runner
 # =============================================================================
 
-def compute_action_distribution(actions: List[int], num_actions: int = 20) -> np.ndarray:
-    """Compute action distribution from action sequence."""
-    dist = np.zeros(num_actions)
-    for action_id in actions:
-        if 0 <= action_id < num_actions:
-            dist[action_id] += 1
-    total = np.sum(dist)
-    if total > 0:
-        dist = dist / total
-    return dist
-
-
 def run_agent_scenarios(agent, num_samples: int = 50) -> Dict[str, np.ndarray]:
     """Run agent through scenarios to collect real behavioral data.
 
