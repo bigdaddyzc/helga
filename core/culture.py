@@ -278,12 +278,15 @@ class CulturalParameters:
         """Validate parameter bounds and consistency.
 
         Returns:
-            True if valid, raises ValueError otherwise
+            True if valid, False otherwise
         """
-        self.schwartz_values.validate()
-        self.norms_matrix.validate()
-        self.affect_schema.validate()
-        return True
+        try:
+            self.schwartz_values.validate()
+            self.norms_matrix.validate()
+            self.affect_schema.validate()
+            return True
+        except (AttributeError, ValueError):
+            return False
 
     def update_schwartz_value(self, dimension: int, value: float) -> None:
         """Update a single Schwartz value dimension.

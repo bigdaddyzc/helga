@@ -116,12 +116,6 @@ ACTION_VALUE_FEATURES = np.array([
     [0.2, 0.1, 0.2, 0.2, 0.9, 0.2, 0.1, 0.1, 0.1, 0.2],
     # 19: continue_anyway - LOW Security, risk-taking (NOT APPROPRIATE)
     [0.2, 0.4, 0.2, 0.2, 0.1, 0.4, 0.3, 0.5, 0.5, 0.2],
-    # 17: redirect - redirecting, referential, open
-    [0.4, 0.5, 0.4, 0.3, 0.3, 0.4, 0.3, 0.3, 0.5, 0.4],
-    # 18: simplify - practical, efficiency-focused
-    [0.3, 0.5, 0.3, 0.4, 0.5, 0.5, 0.2, 0.3, 0.4, 0.3],
-    # 19: expand - ambitious, growth-oriented, exploratory
-    [0.4, 0.7, 0.4, 0.2, 0.2, 0.7, 0.5, 0.6, 0.7, 0.5],
 ], dtype=np.float32)
 
 
@@ -174,7 +168,6 @@ class ValueFeatureExtractor(nn.Module):
             Value feature vector (10,)
         """
         return self.action_value_features[action_id].numpy()
-        return self.action_value_matrix[action_id].detach().numpy()
 
 
 class ComplexityScorer(nn.Module):
