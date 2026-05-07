@@ -29,8 +29,6 @@ from .core import (
     PerceptionSystem,
     CognitionSystem,
     ActionSystem,
-    # Main
-    HELGAAgent,
 )
 
 __all__ = [
@@ -57,8 +55,6 @@ __all__ = [
     "PerceptionSystem",
     "CognitionSystem",
     "ActionSystem",
-    # Main
-    "HELGAAgent",
     # Validation
     "run_all_validations",
     "print_validation_summary",
