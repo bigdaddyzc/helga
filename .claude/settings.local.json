@@ -52,7 +52,27 @@
       "Bash(gh auth *)",
       "Bash(where gh *)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(git config *)",
+      "Bash(claude mcp *)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(git credential *)",
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(git restore *)",
+      "Bash(git log *)",
+      "Bash(git reset *)",
+      "Bash(git rebase *)",
+      "Bash(ping *)",
+      "Bash(ssh *)"
     ]
+  },
+  "preferred_model": "claude-opus-4-7",
+  "telemetry": {
+    "enabled": true
   }
 }
