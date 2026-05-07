@@ -32,6 +32,4 @@ __all__ = [
     "PerceptionSystem",
     "CognitionSystem",
     "ActionSystem",
-    # Main
-    "HELGAAgent",
 ]
