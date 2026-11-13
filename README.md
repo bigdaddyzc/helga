@@ -1,8 +1,29 @@
-# HELGA - 人文环境学习与生成代理系统
+# HELGA · Culture-Aware Agent Simulation
 
 **Humanistic Environmental Learning and Generating Agent**
 
-一个计算模型，模拟人类"观测 → 思考 → 决策 → 行动"闭环。
+An experimental Python framework for exploring how values and social norms affect an agent's **perception → reasoning → decision → action** loop. Run built-in scenarios, inspect utility-based decisions and reasoning traces, and explore the behavioral validation modules.
+
+For developers and research hobbyists studying cognitive models and social simulation. **Research prototype:** validation thresholds and example outputs are not independent evidence that the model reproduces human behavior.
+
+[Quick Start](#quick-start) · [UDSS Web Interface](UDSS_QUICKSTART.md) · [Architecture](#核心架构) · [Validation](#验证模块) · [中文](#中文说明)
+
+## Quick Start
+
+In a Python 3.10+ environment:
+
+```bash
+git clone https://github.com/bigdaddyzc/helga.git
+cd helga
+python -m pip install -r requirements.txt
+python main.py --scenario colleague_late
+```
+
+The scenario walks through perception, reasoning, action selection, and execution, then prints the decision and reasoning chain. For interactive mode, use `python main.py --interactive`; the existing validation entry point is `python main.py --run-validation`.
+
+## 中文说明
+
+HELGA（人文环境学习与生成代理系统）是一个探索文化价值观、社会规范与代理决策关系的实验性计算模型，围绕"观测 → 思考 → 决策 → 行动"形成闭环。验证阈值和示例输出不等于已经证明能复现真实人类行为。
 
 ## 核心架构
 
